@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mWeather</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  </head>
+  <body ng-app="mWeatherApp">
+
+    <div class="container">
+      <div ng-include="js/templates/menu.html"></div>
+    </div>
+
+    <div class="container">
+      <div ui-view></div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+
+    <script src="js/mweather-app.js"></script>
+
+    <script src="js/controllers/home.controller.js"></script>
+
+    <script src="js/services/geolocation.factory.js"></script>
+
+    <script src="js/routes.js"></script>
+  </body>
+</html>

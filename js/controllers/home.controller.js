@@ -6,9 +6,14 @@
 
   HomeController.$inject = ['GeolocationFactory'];
   function HomeController(GeolocationFactory) {
-    var ctrl = this;
+    var ctrl = this,
+        currentLocation = GeolocationFactory.getCurrentLocation();
 
-    ctrl.currentLocation = GeolocationFactory.getCurrentLocation();
+    ctrl.currentLocation = GeolocationFactory.getCurrentLocation().then(function(currentLocation) {
+        GeolocationFactory.getCityNameFromCoords(
+            currentLocation.coords.latitude, currentLocation.coords.longitude
+        );
+    });
   }
 
 })();

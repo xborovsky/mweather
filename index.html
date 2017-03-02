@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <!-- Load Esri Leaflet Geocoder from CDN -->
     <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.3/dist/esri-leaflet-geocoder.css">
+    <link rel="stylesheet" href="css/weather-icons/style.css" />
   </head>
   <body ng-app="mWeatherApp">
 
@@ -17,6 +18,16 @@
 
     <div class="container">
       <div ui-view></div>
+    </div>
+
+    <div class="container">
+      <div class="sunny"></div>
+      <!--<div class="cloudy"></div>
+      <div class="rainy"></div>
+      <div class="snowy"></div>
+      <div class="rainbow"></div>
+      <div class="starry"></div>
+      <div class="stormy"></div>-->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>

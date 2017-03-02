@@ -8,7 +8,9 @@
   function HomeController(currentLocation, ForecastFactory) {
     var ctrl = this;
 
-    ctrl.currentLocation = currentLocation.City;
+    ctrl.currentLocation = currentLocation.City + ', '
+      + currentLocation.Subregion + ', '
+      + currentLocation.Region;
 
     /*ForecastFactory.getCurrentWeather(50.145, 14.213).then(function(result) {
       console.log(result);

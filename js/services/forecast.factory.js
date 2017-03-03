@@ -11,8 +11,6 @@
     var baseUrl = BASE_URL + '?APPID=' + OPEN_WEATHER_API_KEY;
     return {
       getCurrentWeather : function(lat, lon) {
-        console.log('lat: ', lat);
-        console.log('lon: ', lon);
         return $http.get(baseUrl + '&lat=' + lat + '&lon=' + lon);
       }
     };

@@ -5,19 +5,24 @@
     .constant('GEOCODE_SERVICE', L.esri.Geocoding.geocodeService())
     .factory('GeolocationFactory', GeolocationFactory);
 
-    GeolocationFactory.$inject = ['GEOCODE_SERVICE', '$q'];
-    function GeolocationFactory(GEOCODE_SERVICE, $q) {
+    GeolocationFactory.$inject = ['GEOCODE_SERVICE', '$q', '$exceptionHandler'];
+    function GeolocationFactory(GEOCODE_SERVICE, $q, $exceptionHandler) {
       return {
         getCurrentLocation : function() {
           var currentLocation = $q.defer();
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                currentLocation.resolve(position);
-            }, function(error) {
-                throw new GeolocationException(error.message);
-            });
-          } else {
-              throw new GeolocationException('Geolocation not accessible!');
+          try {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                  currentLocation.resolve(position);
+              }, function(error) {
+                  throw new GeolocationException(error.message);
+              });
+            } else {
+                throw new GeolocationException('Geolocation not accessible!');
+            }
+          } catch(ex) {
+              currentLocation.reject(); // TODO ano nebo ne?
+              $exceptionHandler(ex);
           }
 
           return currentLocation.promise;
